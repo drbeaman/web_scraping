@@ -1,0 +1,85 @@
+<!-- 12_Homework -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+    <!--First Column in this Row-->
+      <div class="col-md-12">
+        <div class="box">
+          <strong><h2>Latest Mars News</h2></strong>
+          <p><strong>{{ mars_info.headlines_dict.title }}</strong></p>
+          <p>{{ mars_info.headlines_dict.headline }}</p>
+        </div>
+      </div>  
+    <!--Second Column in this Row-->
+      <div class="col-md-8">
+        <div class="box">
+          <div class="visualization">
+            <h2>Featured Mars Image</h2>
+            <img src="{{ mars_info.img_dict.featured_image_url }}" alt="Latest Mars Image">              
+          </div>
+        </div>
+      <div class="col-md-4">
+        <div class="box">
+          <div class="visualization">
+            <h5><strong>Current Weather on Mars</strong></h5>
+            <p>{{ mars_info.weather_dict.mars_weather}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="box">
+          <div class="table">
+            <h5><strong>Mars Facts</strong></h5>
+            <table>
+                {{ mars_info.table_list|safe}}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2><strong>Mars Hemispheres</strong></h2>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box">
+        <div class="col-md-6">
+          <!-- <ul style="list-style: none;"> -->
+            
+            {% for dict in mars_info.hemispheres_list %}
+            <h4>{{ dict.title }}</h4>
+            <a class=thumbnail>
+            <img src="{{dict.image_url}}" alt="Mars Hemisphere Image">
+            </a>
+          {% endfor %}
+        </div>
+          <!-- </ul> -->
+        <!-- <img src="{{ mars_info.hemispheres_list }}" alt="Cerberus Image">
+          <p> {{ mars_info.hemispheres_list.title}}</p> -->
+          <!-- How to insert all four images and titles? -->
+      </div>
+    </div>
+  </div> 
+</body>
+
+</html>

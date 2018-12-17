@@ -1,0 +1,11 @@
+.container{
+  width:100%
+}
+ .box {
+  /* min-height: 50px; */
+  padding: 30px;
+  margin: 40px;
+  /* font-weight: 800; */
+  background: #fff;
+} 
+
